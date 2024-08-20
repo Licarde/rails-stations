@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>タイトル</th>
+    <th>公開年</th>
+    <th>概要</th>
+    <th>画像URL</th>
+    <th>上映中</th>
+    <th>登録日時</th>
+    <th>更新日時</th>
+  </tr>
+  <% Movie.all.each do |m| %>
+    <tr>
+      <td><%= m.id %></td>
+      <td><%= m.name %></td>
+      <td><%= m.year %></td>
+      <td><%= m.description %></td>
+      <td><%= m.image_url %></td>
+      <% if m.is_showing %>
+        <td>上映中</td>
+      <% else %>
+        <td>公開予定</td>
+      <% end %>
+      <td><%= m.created_at %></td>
+      <td><%= m.updated_at %></td>
+    </tr>
+  <% end %>
+</table>

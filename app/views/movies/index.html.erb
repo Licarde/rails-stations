@@ -1,0 +1,6 @@
+<% Movie.all.each do |m| %>
+  <div class="movies">
+    <img src="<%= m.image_url %>" />
+    <%= m.name %>
+  </div>
+<% end %>
