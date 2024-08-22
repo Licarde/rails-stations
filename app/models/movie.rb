@@ -1,4 +1,4 @@
 class Movie < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :is_showing, presence: true
   validates :name, uniqueness: true
 end

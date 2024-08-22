@@ -1,0 +1,14 @@
+<%= form_with url: "/admin/movies/#{params[:id]}", scope: :movie, method: :put do |f| %>
+  <h2>映画情報更新</h2>
+  <%= f.label :name , "映画タイトル" %>
+  <%= f.text_field :name %>
+  <%= f.label :year , "公開年" %>
+  <%= f.text_field :year %>
+  <%= f.label :is_showing , "公開中か" %>
+  <%= f.check_box :is_showing %>
+  <%= f.label :description , "概要" %>
+  <%= f.text_area :description %>
+  <%= f.label :image_url , "画像URL" %>
+  <%= f.url_field :image_url %>
+  <%= f.submit "Save Changes" %>
+<% end %>
