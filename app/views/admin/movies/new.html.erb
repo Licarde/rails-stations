@@ -1,29 +1,14 @@
-<%= form_with url: "/admin/movies", method: :post do |f| %>
+<%= form_with url: "/admin/movies", scope: :movie, method: :post do |f| %>
   <h2>映画情報更新</h2>
-  <label for="name">映画タイトル</label>
-  <input id="name" type="text" name="name">
-  <label for="year">公開年</label>
-  <input id="year" type="text" name="year">
-  <label for="is_showing">上映中か</label>
-  <input id="is_showing" type="checkbox" name="is_showing">
-  <label for="description">概要</label>
-  <textarea id="description" name="description"></textarea>
-  <label for="image_url">画像URL</label>
-  <input id="image_url" type="url" name="image_url">
-  <input type="submit" value="Create">
-  
-  <!-- <h2>書き方2</h2>
-  <%= f.label :name , "name" %>
+  <%= f.label :name , "映画タイトル" %>
   <%= f.text_field :name %>
-  <%= f.label :year , "year" %>
+  <%= f.label :year , "公開年" %>
   <%= f.text_field :year %>
-  <%= f.label :is_showing , "is_showing" %>
+  <%= f.label :is_showing , "公開中か" %>
   <%= f.check_box :is_showing %>
-  <%= f.label :description , "description" %>
+  <%= f.label :description , "概要" %>
   <%= f.text_area :description %>
-  <%= f.label :url , "url" %>
-  <%= f.url_field :url %>
-  <%= f.submit "Create" %> -->
-  
-
+  <%= f.label :image_url , "画像URL" %>
+  <%= f.url_field :image_url %>
+  <%= f.submit "Create" %>
 <% end %>
