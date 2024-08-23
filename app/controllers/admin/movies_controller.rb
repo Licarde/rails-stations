@@ -39,4 +39,10 @@ class Admin::MoviesController < ApplicationController
       redirect_to("/admin/movies")
     end
   end
+
+  def delete
+    Movie.find_by(id: params[:id]).destroy
+    flash[:notice] = "削除しました"
+    redirect_to("/admin/movies")
+  end
 end
