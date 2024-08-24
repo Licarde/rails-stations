@@ -14,4 +14,9 @@ class MoviesController < ApplicationController
            .or(@movie.where('description LIKE ?', "%#{params[:keyword]}%"))
     end
   end
+
+  def show
+    @movie = Movie.find_by(id: params[:id])
+    @schedules = Schedule.where(movie_id: params[:id])
+  end
 end 

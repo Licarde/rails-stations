@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   delete "admin/movies/:id" => "admin/movies#destroy"
   put "admin/movies/:id" => "admin/movies#update"
   get "sheets" => "sheets#index"
+  get "movies/:id" => "movies#show"
 end

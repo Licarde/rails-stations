@@ -13,8 +13,8 @@
   Sheet.create(column: i + 1, row: "a")
 end
 5.times do |i|
-  Sheet.create(column: i + 6, row: "b")
+  Sheet.create(column: i + 1, row: "b")
 end
 5.times do |i|
-  Sheet.create(column: i + 11, row: "c")
+  Sheet.create(column: i + 1, row: "c")
 end

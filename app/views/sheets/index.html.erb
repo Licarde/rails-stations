@@ -1,5 +1,17 @@
 <table>
-  <%= Sheet.all.each do |s| %>
-    
-  <% end %>
+  <tr>
+    <% Sheet.where(row: "a").each do |s| %>
+      <td>a-<%= s.column %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% Sheet.where(row: "b").each do |s| %>
+      <td>b-<%= s.column %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% Sheet.where(row: "c").each do |s| %>
+      <td>c-<%= s.column %></td>
+    <% end %>
+  </tr>
 </table>
