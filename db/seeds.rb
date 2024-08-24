@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+#sheet
+5.times do |i|
+  Sheet.create(column: i + 1, row: "a")
+end
+5.times do |i|
+  Sheet.create(column: i + 6, row: "b")
+end
+5.times do |i|
+  Sheet.create(column: i + 11, row: "c")
+end

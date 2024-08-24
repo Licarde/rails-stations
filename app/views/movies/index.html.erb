@@ -1,6 +1,18 @@
-<% Movie.all.each do |m| %>
+<%= form_with url: '/movies', method: :get, local: true do |f| %>
+  <%= f.text_field :keyword %>
+  <%= f.radio_button :type, 0, checked: true %>
+  <%= f.label :type, "すべて", value: 0 %>
+  <%= f.radio_button :type, 1 %>
+  <%= f.label :type, '公開予定', valule: 1 %>
+  <%= f.radio_button :type, 2 %>
+  <%= f.label :type, '公開中', value: 2 %>
+  <%= f.submit "search" %>
+<% end %>
+
+<% @movie.each do |m| %>
   <div class="movies">
     <img src="<%= m.image_url %>" />
-    <%= m.name %>
+    <h2><%= m.name %></h2>
+    <h4><%= m.description %></h4>
   </div>
 <% end %>
