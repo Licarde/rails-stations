@@ -33,3 +33,16 @@
     </ul>
   </div>
 <% end %>
+
+<h2>予約</h2>
+<%= form_with url: "/movies/#{params[:id]}/reservation", method: :get do |f| %>
+  <% week = [] %>
+  <% 7.times do |i| %>
+    <% week[i] = Time.zone.today.day + i %>
+  <% end %>
+  <%= f.select :date, week, {}%>
+  <%= f.label :date, '日付を選択' %>
+  <%= f.collection_select :schedule_id, Schedule.where(movie_id: params[:id]), :id, :start_time %>
+  <%= f.label :schedule_id, '時刻を選択' %>
+  <%= f.submit "座席を予約する" %>
+<% end %>

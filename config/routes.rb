@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get "movies/search" => "movies#search"
   get "movies/:id" => "movies#show"
   
+  get "movies/:movie_id/reservation" => "movies#reservation"
+  get "movies/:movie_id/schedules/:schedule_id/reservations/new" => "reservations#new"
+  post "reservations" => "reservations#create"
+
   get "sheets" => "sheets#index"
 
   post "admin/movies" => "admin/movies#create"

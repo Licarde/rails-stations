@@ -19,4 +19,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(id: params[:id])
     @schedules = Schedule.where(movie_id: params[:id])
   end
-end 
+
+  def reservation
+    @sheets = Sheet.all
+    if params[:schedule_id].nil? || params[:date].nil?
+      redirect_to("/movies/#{params[:movie_id]}")
+    end
+  end
+end

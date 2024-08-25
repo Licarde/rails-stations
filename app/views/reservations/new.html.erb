@@ -1,0 +1,11 @@
+<%= form_with url: "reservations", scope: :reservation, method: :post do |f| %>
+  <%= f.hidden_field :movie_id, value: params[:movie_id] %>
+  <%= f.hidden_field :schedule_id, value: params[:schedule_id] %>
+  <%= f.hidden_field :sheet_id, value: params[:sheet_id] %>
+  <%= f.hidden_field :date, value: params[:date] %>
+  <%= f.label :name, '氏名' %>
+  <%= f.text_field :name %>
+  <%= f.label :email, 'メールアドレス' %>
+  <%= f.text_field :email %>
+  <%= f.submit '送信' %>
+<% end %>

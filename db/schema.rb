@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_24_154238) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_25_004447) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,6 +27,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_24_154238) do
     t.index ["name"], name: "index_movies_on_name"
   end
 
+  create_table "reservations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "date", null: false
+    t.bigint "schedule_id"
+    t.bigint "sheet_id"
+    t.string "email", null: false
+    t.string "name", limit: 50, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id", "sheet_id"], name: "index_reservations_on_schedule_id_and_sheet_id", unique: true
+    t.index ["schedule_id"], name: "index_reservations_on_schedule_id"
+    t.index ["sheet_id"], name: "index_reservations_on_sheet_id"
+  end
+
   create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "movie_id"
     t.time "start_time", null: false, comment: "上映開始時刻"
@@ -41,5 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_24_154238) do
     t.string "row", limit: 1, null: false
   end
 
+  add_foreign_key "reservations", "schedules"
+  add_foreign_key "reservations", "sheets"
   add_foreign_key "schedules", "movies"
 end
