@@ -12,7 +12,9 @@
   <%= f.url_field :image_url %>
   <%= f.submit "Save Changes" %>
 <% end %>
+<%= link_to 'スケジュール一覧', "admin/schedules/#{params[:id]}" %>
+<%= link_to '新規スケジュール', "admin/movies/#{params[:id]}/schedules/new" %>
 
 <%# 何してもメソッドはPOSTのままだった %>
 <%# button_to 'Delete', "/admin/movies/#{params[:id]}", data: {turbo_method: :get, turbo_confirm: '削除しますか?' } %>
-<%= button_to 'Delete', "/admin/movies/#{params[:id]}", data: {turbo_method: :get, turbo_confirm: '削除しますか?' } %>
+<%= button_to 'Delete', "/admin/movies/#{params[:id]}", data: {turbo_method: :delete, turbo_confirm: '削除しますか?' } %>

@@ -1,0 +1,9 @@
+<%= form_with url: "/admin/schedule/#{params[:id]}", scope: :schedule , method: :put do |f| %>
+  <%= f.time_select :start_time %>
+  <%= f.label "開始時刻", :start_time %>
+  <%= f.time_select :end_time %>
+  <%= f.label "終了時刻", :end_time %>
+  <%= f.submit "送信" %>
+<% end %>
+
+<%= button_to "削除", "/admin/schedules/#{params[:id]}#{params[:id]}", data: {turbo_method: :delete, turbo_confirm: '削除しますか?' } %>

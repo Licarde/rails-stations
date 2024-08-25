@@ -1,0 +1,16 @@
+<h1>上映一覧</h1>
+
+<% Movie.all.each do |m| %>
+  <h2>
+    ID: <%= m.id %>
+    作品名: <%= m.name %>
+  </h2>
+  <ul>
+    <% Schedule.where(movie_id: m.id).each do |s| %>
+      <li>
+        <%# link_to "開始時刻：#{s.start_time.strftime( "%H:%M" )}終了時刻：#{s.end_time.strftime( "%H:%M" )}", "/admin/schedules/#{s.id}" %>
+        <%= link_to "開始時刻：#{s.start_time}終了時刻：#{s.end_time}", "/admin/schedules/#{s.id}" %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
