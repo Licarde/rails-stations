@@ -4,8 +4,6 @@
   <%#= Schedule.find(params[:schedule_id]).start_time.hour %>時の回
   予約画面
 </h2>
-<%= Sheet.all.each do |s| %>
-<% end %>
 <table>
   <tr>
     <% Sheet.where(row: "a").each do |s| %>

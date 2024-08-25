@@ -10,9 +10,9 @@
 <% end %>
 
 <% @movie.each do |m| %>
-  <div class="movies">
-    <img src="<%= m.image_url %>" />
-    <h2><%= m.name %></h2>
-    <h4><%= m.description %></h4>
-  </div>
+  <ul>
+    <li><img src="<%= m.image_url %>" /></li>
+    <li><%= link_to m.name, "/movies/#{m.id}" %></li>
+    <li><%= m.description %></li>
+  </ul>
 <% end %>

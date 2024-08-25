@@ -8,13 +8,23 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+row = ["a", "b", "c"]
 #sheet
+# 5.times do |i|
+#   Sheet.create(column: i + 1, row: "a")
+# end
+# 5.times do |i|
+#   Sheet.create(column: i + 1, row: "b")
+# end
+# 5.times do |i|
+#   Sheet.create(column: i + 1, row: "c")
+# end
+
 5.times do |i|
-  Sheet.create(column: i + 1, row: "a")
+  3.times do |j|
+    3.times do |k|
+      Screen.create(column: i + 1, row: row[j], screen: k + 1)
+    end
+  end
 end
-5.times do |i|
-  Sheet.create(column: i + 1, row: "b")
-end
-5.times do |i|
-  Sheet.create(column: i + 1, row: "c")
-end
+

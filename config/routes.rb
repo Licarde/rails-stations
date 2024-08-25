@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "movies" => "movies#index"
   get "movies/search" => "movies#search"
   get "movies/:id" => "movies#show"
-  
+
   get "movies/:movie_id/reservation" => "movies#reservation"
   get "movies/:movie_id/schedules/:schedule_id/reservations/new" => "reservations#new"
   post "reservations" => "reservations#create"
+
+  get "admin/reservations" => "admin/reservations#index"
+  get "admin/reservations/new" => "admin/reservations#new"
+  post "admin/reservations" => "admin/reservations#create"
+  get "admin/reservations/:id" => "admin/reservations#show"
+  put "admin/reservations/:id" => "admin/reservations#update"
+  delete "admin/reservations/:id" => "admin/reservations#destroy"
+  # post "admin/reservations/:id" => "admin/reservations#destroy"
 
   get "sheets" => "sheets#index"
 
@@ -24,4 +33,6 @@ Rails.application.routes.draw do
   delete "admin/schedules/:id" => "admin/schedules#destroy"
   #post "admin/schedules/:id" => "admin/schedules#destroy"
   
+  get "user/new"
+  root to: "movies#index"
 end

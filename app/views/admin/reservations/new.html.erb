@@ -1,0 +1,22 @@
+<h2>予約追加</h2>
+
+<%= form_with url: "/admin/reservations", scope: :reservation, method: :post do |f| %>
+  <%#= f.label 'タイトル' %>
+  <%#= f.text_field : %>
+  <%= f.label :name, '名前' %>
+  <%= f.text_field :name %>
+  <%= f.label :email, 'メール' %>
+  <%= f.email_field :email %>
+  <%= f.label :sheet_id, '席ID' %>
+  <%= f.collection_select :sheet_id, @sheets, :id, :column %>
+  <%= f.label :schedule_id, 'スケジュールID' %>
+  <%= f.collection_select :schedule_id, @schedules, :id, :start_time %>
+  <% week = [] %>
+  <% 7.times do |i| %>
+    <% week[i] = Time.zone.today + i %>
+  <% end %>
+  <%= f.label :date, '日付を選択' %>
+  <%= f.select :date, week, {}%>
+  <%= f.submit '送信' %>
+<% end %>
+

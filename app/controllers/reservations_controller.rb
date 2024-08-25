@@ -16,14 +16,13 @@ class ReservationsController < ApplicationController
     ]
     if array.all?
       begin
-        
-              Reservation.new(
-                schedule_id: params[:reservation][:schedule_id],
-                sheet_id: params[:reservation][:sheet_id],
-                name: params[:reservation][:name],
-                email: params[:reservation][:email],
-                date: params[:reservation][:date]
-              ).save
+        Reservation.new(
+          schedule_id: params[:reservation][:schedule_id],
+          sheet_id: params[:reservation][:sheet_id],
+          name: params[:reservation][:name],
+          email: params[:reservation][:email],
+          date: params[:reservation][:date]
+        ).save
       rescue ActiveRecord::RecordNotUnique
         redirect_to("/movies/#{array[5]}/reservation?schedule_id=#{array[0]}&date=#{array[4]}")
       else

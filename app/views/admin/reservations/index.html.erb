@@ -1,0 +1,31 @@
+<h1>予約一覧</h1>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>上映時刻</th>
+    <th>予約ID</th>
+    <th>sheet_id</th>
+    <th>日時</th>
+    <th>名前</th>
+    <th>メールアドレス</th>
+    <th>登録日時</th>
+    <th>更新日時</th>
+  </tr>
+  <% @movies.each do |m| %>
+    <% @schedules.where(movie_id: m.id).each do |s| %>
+      <% @reservations.where(schedule_id: s.id).each do |r| %>
+        <tr>
+          <td><%= m.name %></td>
+          <td><%= s.start_time %></td>
+          <td><%= r.id %></td>
+          <td><%= r.sheet_id %></td>
+          <td><%= r.date %></td>
+          <td><%= r.name %></td>
+          <td><%= r.email %></td>
+          <td><%= r.created_at %></td>
+          <td><%= r.updated_at %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>

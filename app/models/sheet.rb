@@ -1,3 +1,3 @@
 class Sheet < ApplicationRecord
-  has_many :reservation, dependent: :destroy
+  has_one :reservation, dependent: :destroy
 end

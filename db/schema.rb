@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_25_004447) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_25_133339) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_25_004447) do
     t.string "name", limit: 50, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["schedule_id", "sheet_id"], name: "index_reservations_on_schedule_id_and_sheet_id", unique: true
+    t.index ["schedule_id", "sheet_id", "date"], name: "index_reservations_on_schedule_id_and_sheet_id_and_date", unique: true
     t.index ["schedule_id"], name: "index_reservations_on_schedule_id"
     t.index ["sheet_id"], name: "index_reservations_on_sheet_id"
   end
@@ -49,9 +49,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_25_004447) do
     t.index ["movie_id"], name: "index_schedules_on_movie_id"
   end
 
+  create_table "screens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "column", limit: 2, null: false
     t.string "row", limit: 1, null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "reservations", "schedules"

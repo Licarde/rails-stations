@@ -4,4 +4,5 @@ class Reservation < ApplicationRecord
   belongs_to :schedule
   belongs_to :sheet
   validates :sheet_id, :schedule_id, :name, presence: true
+  validates :sheet_id, uniqueness: { scope: :schedule_id }
 end

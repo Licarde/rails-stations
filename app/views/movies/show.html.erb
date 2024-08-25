@@ -38,7 +38,7 @@
 <%= form_with url: "/movies/#{params[:id]}/reservation", method: :get do |f| %>
   <% week = [] %>
   <% 7.times do |i| %>
-    <% week[i] = Time.zone.today.day + i %>
+    <% week[i] = Time.zone.today + i %>
   <% end %>
   <%= f.select :date, week, {}%>
   <%= f.label :date, '日付を選択' %>
